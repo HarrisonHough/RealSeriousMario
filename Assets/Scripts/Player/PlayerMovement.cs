@@ -7,14 +7,14 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private float _moveSpeed = 5f;
-    private Vector3 _velocity;
+    private Vector3 _targetVelocity;
     private Rigidbody2D _rigidbody2D;
-
+    private float _xInput = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        _velocity = Vector3.zero;
+        _targetVelocity = Vector3.zero;
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         PlayerController playerController = GetComponent<PlayerController>();
@@ -27,15 +27,20 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateVelocity(float xInput)
     {
-        _velocity.x = xInput;
+        _xInput = xInput;
+    }
+
+    public void MatchVelocity()
+    {
+
     }
 
 
     private void FixedUpdate()
     {
         //_rigidbody2D.transform.Translate(_velocity * _moveSpeed );
-
-        Vector3 targetVelocity = new Vector2(_velocity.x * _moveSpeed * 200, _rigidbody2D.velocity.y);
-        _rigidbody2D.velocity = targetVelocity;
+        _targetVelocity = Vector2.zero;
+        _targetVelocity = new Vector2(_xInput * _moveSpeed * 200, _rigidbody2D.velocity.y);
+        _rigidbody2D.velocity = _targetVelocity;
     }
 }
