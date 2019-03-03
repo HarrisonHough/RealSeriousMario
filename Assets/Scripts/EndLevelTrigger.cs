@@ -11,7 +11,7 @@ public class EndLevelTrigger : MonoBehaviour
         if (collision.tag.Contains("Player"))
         {
             //end level
-
+            GameManager.Instance.LevelComplete();
         }
     }
 }

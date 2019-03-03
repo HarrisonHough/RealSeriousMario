@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
 
     [SerializeField]
     private float _jumpPower = 10f;
+    public LayerMask platformLayer;
 
     private Rigidbody2D _rigidbody2D;
     private CircleCollider2D _CircleCollider2D;
@@ -24,11 +25,23 @@ public class PlayerJump : MonoBehaviour
 
     public void Jump()
     {
-        if (_rigidbody2D.velocity.y != 0)
+        if (!CheckIsGrounded())
             return;
         //_rigidbody2D.AddForce(Vector2.up * _jumpPower);
         //_rigidbody2D.velocity += Vector2.up * _jumpPower;
         _rigidbody2D.AddForce(Vector2.up * _jumpPower, ForceMode2D.Impulse);
 
+    }
+
+    private bool CheckIsGrounded()
+    {
+        bool isGrounded = false;
+        Vector3 playerBottomLeft = new Vector3(transform.position.x - (_CircleCollider2D.radius), transform.position.y - (_CircleCollider2D.radius),0);
+        for (int i = 0; i < 3; i++)
+        {
+            if (Physics2D.Raycast(transform.position, transform.TransformDirection(-Vector3.up), (_CircleCollider2D.radius)+ 0.1f, platformLayer))
+                isGrounded = true;
+        }
+        return isGrounded;
     }
 }

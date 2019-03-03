@@ -22,6 +22,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.Instance.CurrentState != GameState.InGame)
+        {
+            //to ensure movement stops
+            onMovementInputUpdate?.Invoke(0);
+            return;
+        }
+
         float xInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
 
         onMovementInputUpdate?.Invoke(xInput);
