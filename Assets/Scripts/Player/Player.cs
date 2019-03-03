@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, IKillable
 
     private void Update()
     {
-        if (GameManager.Instance.CurrentState != GameState.InGame)
+        if (GameManager.Instance.currentState != GameState.InGame)
             return;
         _timeRemaining -= Time.deltaTime;
         _uiController.UpdateTimeText(_timeRemaining);
@@ -62,6 +62,8 @@ public class Player : MonoBehaviour, IKillable
             return;
         }
         _cameraShake.StartShakeEffect();
+        ParticleEffect particles = GameManager.Instance.destroyParticlesPool.GetObject().GetComponent<ParticleEffect>();
+        particles.PlayAtPosition(transform.position);
         isDead = true;
     }
 

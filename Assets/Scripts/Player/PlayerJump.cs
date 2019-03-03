@@ -11,6 +11,8 @@ public class PlayerJump : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private CircleCollider2D _CircleCollider2D;
+
+    public bool isGrounded { get; private set; }
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class PlayerJump : MonoBehaviour
 
     }
 
-    private bool CheckIsGrounded()
+    public bool CheckIsGrounded()
     {
         bool isGrounded = false;
         Vector3 playerBottomLeft = new Vector3(transform.position.x - (_CircleCollider2D.radius), transform.position.y - (_CircleCollider2D.radius),0);

@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Staging-Laptop.unity
-    guid: 818734c483cfa424aa179e3e270dbfcc
+    path: Assets/Scenes/Staging.unity
+    guid: 0b3dccbfb2910e04ea3a47d7e5db64ea
   m_configObjects: {}

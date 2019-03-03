@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Instance.CurrentState != GameState.InGame)
+        if (GameManager.Instance.currentState != GameState.InGame)
         {
             //to ensure movement stops
             onMovementInputUpdate?.Invoke(0);
