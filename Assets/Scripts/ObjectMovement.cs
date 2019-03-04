@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class ObjectMovement : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +21,8 @@ public class ObjectMovement : MonoBehaviour
     private int _fromWaypointIndex;
     private float _percentBetweenWaypoints;
 
+    private Vector3 _velocity;
+    private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
@@ -28,13 +31,20 @@ public class ObjectMovement : MonoBehaviour
         {
             _globalWaypoints[i] = (Vector3)_localWaypoints[i] + transform.position;
         }
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 velocity = CalculatePlatformMovement();
-        transform.Translate(velocity);
+        _velocity = CalculatePlatformMovement();
+        
+    }
+
+    private void FixedUpdate()
+    {
+        //transform.Translate(_velocity);
+        _rigidbody2D.MovePosition(transform.position + _velocity);
     }
 
     private Vector3 CalculatePlatformMovement()

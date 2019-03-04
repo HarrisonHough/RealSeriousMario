@@ -9,5 +9,6 @@ public class DestructableBrick : MonoBehaviour, IDestructable
         ParticleEffect particles = GameManager.Instance.destroyParticlesPool.GetObject().GetComponent<ParticleEffect>();
 
         particles.PlayAtPosition(transform.position);
+        gameObject.SetActive(false);
     }
 }

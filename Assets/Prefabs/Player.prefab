@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 5242566131209836497}
   - component: {fileID: 5242566131209836500}
   - component: {fileID: 5242566131209836503}
-  - component: {fileID: 5242566131209836502}
   - component: {fileID: 2003308384}
+  - component: {fileID: 6629393308298016823}
+  - component: {fileID: 2957928631567850350}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,23 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd1b6915926e69b45ab341a7c80ba1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 2
---- !u!114 &5242566131209836502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242566131209836525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5b1879821719645a221d3681bc8ab7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _jumpPower: 15
-  platformLayer:
-    serializedVersion: 2
-    m_Bits: 256
+  _moveSpeed: 1
 --- !u!114 &2003308384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,3 +162,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLives: 3
   _maxTime: 300
+--- !u!114 &6629393308298016823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242566131209836525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc865e7e46c6c64dbb786175dc14f42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2957928631567850350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5242566131209836525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 896e4c3fb4e311e41be757d72e6f1c64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jumpPower: 15
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 256

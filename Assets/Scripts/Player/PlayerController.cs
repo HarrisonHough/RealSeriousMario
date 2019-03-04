@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
 
     public delegate void JumpEvent();
     public JumpEvent onJumpEvent;
+    public delegate void MovementStartEvent(float xInput);
+    public MovementStartEvent onMovementStartEvent;
+    public delegate void MovementStopEvent();
+    public MovementStopEvent onMovementStopEvent;
     public delegate void MovementInputUpdate(float xInput);
     public MovementInputUpdate onMovementInputUpdate;
 
@@ -32,6 +36,24 @@ public class PlayerController : MonoBehaviour
         float xInput = Input.GetAxisRaw("Horizontal") * Time.deltaTime;
 
         onMovementInputUpdate?.Invoke(xInput);
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            onMovementStartEvent?.Invoke(-1);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            onMovementStartEvent?.Invoke(1);
+        }
+        if (Input.GetKeyUp(KeyCode.A) && !Input.GetKey(KeyCode.D))
+        {
+            onMovementStopEvent?.Invoke();
+        }
+        if (Input.GetKeyUp(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        {
+            onMovementStopEvent?.Invoke();
+        }
+
         if (Input.GetButtonDown("Jump"))
         {
             onJumpEvent?.Invoke();
